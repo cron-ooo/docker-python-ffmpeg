@@ -1,4 +1,4 @@
-FROM python:3.9.4-slim-buster
+FROM python:3.9.5-slim-buster
 ENV PATH="${PATH}:/root/.poetry/bin" \
     POETRY_CACHE_DIR="/var/cache/pypoetry"
 RUN echo 'deb http://security.debian.org/debian-security buster/updates main non-free contrib\ndeb http://deb.debian.org/debian buster-updates main non-free contrib\ndeb http://deb.debian.org/debian buster-backports main non-free contrib\ndeb http://deb.debian.org/debian buster-proposed-updates main non-free contrib\ndeb http://deb.debian.org/debian buster main non-free contrib\ndeb-src http://deb.debian.org/debian buster main non-free contrib' > /etc/apt/sources.list || exit 1 && \
