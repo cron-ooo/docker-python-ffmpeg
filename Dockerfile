@@ -22,7 +22,7 @@ RUN echo 'deb http://security.debian.org/debian-security buster/updates main non
     apt update || exit 1 && \
     DEBIAN_FRONTEND=noninteractive apt install --no-install-recommends -y --allow-downgrades ./ffmpeg_*.deb ./libavutil56_*.deb ./libavfilter7_*.deb ./libavcodec58_*.deb || exit 1 && \
     echo "\nInstalling Node.js:" || exit 1 && \
-    curl -fsSL https://deb.nodesource.com/setup_15.x | bash || exit 1 && \
+    curl -fsSL https://deb.nodesource.com/setup_16.x | bash || exit 1 && \
     apt install -y --no-install-recommends nodejs || exit 1 && \
     node --version || exit 1 && \
     npm --version || exit 1 && \
