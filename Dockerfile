@@ -1,7 +1,8 @@
 FROM python:3.9.5-slim-buster
 ENV PATH="${PATH}:/root/.poetry/bin" \
     POETRY_CACHE_DIR="/var/cache/pypoetry" \
-    NODE_VERSION=16.1.0
+    NODE_VERSION=16.1.0 \
+    NVIDIA_VISIBLE_DEVICES=all
 RUN echo 'deb http://security.debian.org/debian-security buster/updates main non-free contrib\ndeb http://deb.debian.org/debian buster-updates main non-free contrib\ndeb http://deb.debian.org/debian buster-backports main non-free contrib\ndeb http://deb.debian.org/debian buster-proposed-updates main non-free contrib\ndeb http://deb.debian.org/debian buster main non-free contrib\ndeb-src http://deb.debian.org/debian buster main non-free contrib' > /etc/apt/sources.list || exit 1 && \
     apt update || exit 1 && \
     DEBIAN_FRONTEND=noninteractive apt install --no-install-recommends -y apt-src || exit 1 && \
