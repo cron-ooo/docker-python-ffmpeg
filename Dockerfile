@@ -19,7 +19,7 @@ RUN echo 'deb http://security.debian.org/debian-security buster/updates main non
     # скачиваем пакеты исходного кода и устанавливаем зависимости
     apt-src install ffmpeg && \
     # добавляем аргументы сборки для того чтобы ffmpeg мог использовать cuda видеокарты
-    sed -i 's/--enable-sdl2/--enable-sdl2 \\\n        --enable-nonfree \\\n        --enable-cuda \\\n        --enable-libnpp \\\n        --extra-cflags=-I\/usr\/include\/cuda \\\n        --extra-ldflags=-L\/usr\/lib\/x86_64-linux-gnu\/cuda-gdb/' ffmpeg-*/debian/rules && \
+    sed -i 's/--enable-sdl2/--enable-sdl2 --enable-nonfree --enable-cuda --enable-libnpp --extra-cflags=-I\/usr\/include\/cuda --extra-ldflags=-L\/usr\/lib\/x86_64-linux-gnu\/cuda-gdb/' ffmpeg-*/debian/rules && \
     # Устанавлиаем приоритеты репозиториев для выравнивания приоритетов, чтобы пакеты в дефолте устанавливались из backports
     echo 'Package: *\nPin: release a=buster/updates\nPin-Priority: 500\n\nPackage: *\nPin: release a=buster\nPin-Priority: 500\n\nPackage: *\nPin: release a=buster-updates\nPin-Priority: 500\n\nPackage: *\nPin: release a=buster-backports\nPin-Priority: 500\n\nPackage: *\nPin: release a=buster-proposed-updates\nPin-Priority: 500' > /etc/apt/preferences && \
     # Обновляем кеш пакетов
@@ -119,7 +119,11 @@ RUN echo 'deb http://security.debian.org/debian-security buster/updates main non
      node-less \
      python3 \
      curl && \
+    # Очищаем кеш локального репозитория извлечённых файлов
     apt clean -y && \
+    # Удаляем пакеты исходного кода, зависимости и собранные пакеты
     rm -rf /usr/local/src && \
+    # Подчищаем остатки мусора от apt
     rm -rf /var/lib/apt/lists/* && \
+    # Удаляем временные файлы
     rm -rf /tmp/*
