@@ -35,7 +35,7 @@ RUN echo 'deb http://security.debian.org/debian-security buster/updates main non
     # Устанавливаем скачанный пакет
     DEBIAN_FRONTEND=noninteractive apt install --no-install-recommends -y ./deb-multimedia-keyring_2016.8.1_all.deb && \
     # добавляем репозитории deb-multimedia
-    echo 'deb http://www.deb-multimedia.org buster main non-free\ndeb http://www.deb-multimedia.org buster-backports main' > /etc/apt/sources.list.d/deb-multimedia.list || && \
+    echo 'deb http://www.deb-multimedia.org buster main non-free\ndeb http://www.deb-multimedia.org buster-backports main' > /etc/apt/sources.list.d/deb-multimedia.list && \
     # обновляем кеш пакетов
     apt update && \
     # Устанавливаем пакет nv-codec-headers
