@@ -9,11 +9,17 @@ FFmpeg Docker image
 
 1. Для работы образа на хосте должен быть установлен Debian 10 обновлённый до бекпортов и с драйверами из бекпортов.
 
-2. Docker среда для выполнения должна быть анстроена согласно иструкции https://github.com/NVIDIA/nvidia-container-runtime
 
-3. На хосте должны быть установлены библиотеки для работы с cuda 
+2. Docker среда для выполнения должна быть анстроена согласно иструкции 
+https://github.com/NVIDIA/nvidia-container-runtime
+
+
+3. На хосте должны быть установлены библиотеки для работы с cuda
+
 https://packages.debian.org/buster-backports/libcuda1
+
 https://packages.debian.org/buster-backports/libcudart11.0
+
 
 Пример команды которой можно запустить контейнер с пробросом в него видеокарты
 docker run -ti -v /video:/mnt --gpus all wladimi/python-ffmpeg:3.9.5-slim-buster bash
