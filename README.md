@@ -22,7 +22,10 @@ https://packages.debian.org/buster-backports/libcudart11.0
 
 
 Пример команды которой можно запустить контейнер с пробросом в него видеокарты
+
 docker run -ti -v /video:/mnt --gpus all wladimi/python-ffmpeg:3.9.5-slim-buster bash
 
+
 Пример команды внутри контейнера
+
 ffmpeg -y -hwaccel cuvid -c:v h264_cuvid -i "/mnt/Окружающий_мир__3_класс_55урок.mp4" -vf scale_npp="-2:480" -c:v h264_nvenc -preset slow "/tmp/SampleVideo_1280x720_10mbk9g38pcr_480p.mp4"
